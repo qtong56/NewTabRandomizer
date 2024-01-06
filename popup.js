@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   chrome.storage.sync.get({ urls: [] }, function (result) {
     updateURLList(result.urls);
   });
-  
+
   // Add URL button click event
   document.getElementById('add-url').addEventListener('click', function () {
     let newURL = document.getElementById('new-url').value.trim();
@@ -11,6 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (newURL !== '') {
       chrome.storage.sync.get({ urls: [] }, function (result) {
         const updatedURLs = newURL.split(';');
+        // validate URLs
+        for (url of updatedURLs) {
+          if (!isValidUrl(url)) {
+            alert('Invalid URL: ' + url);
+            return;
+          }
+        }
+
+        // Save new URLs to storage
         chrome.storage.sync.set({ urls: updatedURLs }, function () {
           updateURLList(updatedURLs);
         });
@@ -40,4 +49,13 @@ function updateURLList(urls) {
   // fill form with current URLs
   const urlInput = document.getElementById('new-url');
   urlInput.value = urls.join(';');
+}
+
+function isValidUrl(string) {
+  try {
+    new URL(string);
+    return true;
+  } catch (err) {
+    return false;
+  }
 }
