@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Random Website Opener",
+  "version": "1.0",
+  "description": "Open a random website from a list of URLs.",
+  "permissions": ["storage", "tabs"],
+  "icons": {
+    "48": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Random Website Opener",
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  }
+}

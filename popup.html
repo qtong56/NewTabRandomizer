@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Random Website Opener</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #url-list {
+      margin-bottom: 10px;
+    }
+
+    #new-url {
+      width: 70%;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>New Tab Randomizer</h2>
+  <h4>Current URLs</h4>
+  <div id="url-list">
+    <!-- Display the list of URLs here -->
+  </div> 
+  <h4>Add a new URL (start each with https:// and separate by semicolons ;)</h4>
+  <input type="text" id="new-url" placeholder="Add a new URL" value="https://www.google.com">
+  <button id="add-url">Update</button>
+  <script src="popup.js"></script>
+</body>
+
+</html>
